@@ -2,9 +2,10 @@ import pygame
 import sys
 from pygame.locals import *
 
-from piece import I, L
+from piece import I, L, Vector, Rotate
 from grid import Grid
 from base import Point
+from pile import Pile
 
 
 X=10
@@ -12,28 +13,36 @@ Y=20
 
 pygame.init()
 grid = Grid(X, Y)
+pile = Pile(grid)
 
-p = I(Point(0,2))
-p.draw(grid)
+active = I(Point(2,5))
+active.draw(grid)
 while True:
+    move = Point(0, 0)
+    if active is None:
+        active = I (Point(2, 0))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit(0)
 
+
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w:
-                p.move(grid, Point(0, -1))
+                move = Vector.VT_UP
             if event.key == pygame.K_s:
-                p.move(grid, Point(0, 1))
+                move = Vector.VT_DOWN
             if event.key == pygame.K_d:
-                p.move(grid, Point(1, 0))
+                move = Vector.VT_RIGHT
             if event.key == pygame.K_a:
-                p.move(grid, Point(-1, 0))
+                move = Vector.VT_LEFT
             if event.key == pygame.K_COMMA:
-                pass
+                move = Rotate.ROT_COUNTERCLOCK
             if event.key == pygame.K_PERIOD:
-                pass
+                move = Rotate.ROT_CLOCK
+    if active:
+        active = active.move(grid, move, pile)
+
 
     pygame.display.flip()
     pygame.display.update()
