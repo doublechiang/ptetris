@@ -12,15 +12,16 @@ X=10
 Y=20
 
 pygame.init()
+pygame.key.set_repeat(300, 50)
 grid = Grid(X, Y)
 pile = Pile(grid)
 
-active = I(Point(2,15))
+active = I(Point(4,0))
 active.draw(grid)
 while True:
     move = Point(0, 0)
     if active is None:
-        active = I (Point(2, 12))
+        active = I (Point(4, 0))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
