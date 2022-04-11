@@ -15,18 +15,16 @@ pygame.init()
 grid = Grid(X, Y)
 pile = Pile(grid)
 
-active = I(Point(2,5))
+active = I(Point(2,15))
 active.draw(grid)
 while True:
     move = Point(0, 0)
     if active is None:
-        active = I (Point(2, 0))
+        active = I (Point(2, 12))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit(0)
-
-
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w:
                 move = Vector.VT_UP
@@ -40,10 +38,10 @@ while True:
                 move = Rotate.ROT_COUNTERCLOCK
             if event.key == pygame.K_PERIOD:
                 move = Rotate.ROT_CLOCK
-    if active:
+    if active and move != Point(0,0):
         active = active.move(grid, move, pile)
 
-
+    
     pygame.display.flip()
     pygame.display.update()
 

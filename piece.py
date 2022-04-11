@@ -28,9 +28,14 @@ class Piece:
             if grid.isInside(b) is False:
                 if move == Vector.VT_DOWN:
                     pile.append(self)
+                    pile.update(grid)
                     return None
                 return self
+
+        for b in new_shape:
             if pile.collide(b):
+                pile.append(self)
+                pile.update(grid)
                 return None
 
         # erase previous background 
@@ -44,8 +49,6 @@ class Piece:
             self.shape = self.pattern[self.shape_idx] 
         self.draw(grid)
         return self
-
-
 
 
 
