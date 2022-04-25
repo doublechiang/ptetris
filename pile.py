@@ -20,10 +20,18 @@ class Pile():
 
     def collide(self, p:Point):
         """ Collide with Piece
+            return True if collide, return False if not.
         """
         if self.matrix[p.y][p.x] == True:
             logging.debug(self.matrix)
             return True
+        return False
+
+    def collideWithPiece(self, p:Piece):
+        locs = p.getShapeLocation()
+        for p in locs:
+            if self.collide(p):
+                return True
         return False
 
     def __remove_row(self, row, grid):

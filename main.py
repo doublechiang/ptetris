@@ -12,16 +12,34 @@ X=10
 Y=20
 
 pygame.init()
-pygame.key.set_repeat(300, 50)
+pygame.display.set_caption("Python Teteris")
+pygame.font.init()
+over_font = pygame.font.Font(pygame.font.get_default_font(), 36)
+over_text = pygame.font.Font.render(over_font, 'Game Over', True, (0, 255, 255))
+pygame.key.set_repeat(300, 10)
+clock = pygame.time.Clock()
 grid = Grid(X, Y)
 pile = Pile(grid)
 
 active = I(Point(4,0))
 active.draw(grid)
+# set a timer for every 1 second initial
+pygame.time.set_timer(pygame.USEREVENT, 1000)
+
+
+
 while True:
+    clock.tick(10)
+
     move = Point(0, 0)
     if active is None:
         active = I (Point(4, 0))
+        if pile.collideWithPiece(active):
+            # Print Game Over
+            grid.text(over_text)
+            active = None
+        
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -39,6 +57,9 @@ while True:
                 move = Rotate.ROT_COUNTERCLOCK
             if event.key == pygame.K_PERIOD:
                 move = Rotate.ROT_CLOCK
+        if event.type == pygame.USEREVENT:
+            move = Vector.VT_DOWN
+
     if active and move != Point(0,0):
         active = active.move(grid, move, pile)
 

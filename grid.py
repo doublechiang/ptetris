@@ -23,6 +23,9 @@ class Grid:
             return False
         return True
 
+    def text(self, render):
+        self.surface.blit(render, dest=(0,0))
+
 
     def __init__(self, width, height):
         self.w = width

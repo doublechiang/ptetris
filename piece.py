@@ -65,10 +65,6 @@ class Piece:
 
 
 
-
-
-
-
     def draw(self, grid, color=None):
         if color == None:
             color = self.color
