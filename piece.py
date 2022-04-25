@@ -98,11 +98,85 @@ class I(Piece):
         self.pattern = I.SHAPE
         self.shape = I.SHAPE[self.shape_idx]
 
+class J(Piece):
+    SHAPE = [
+        [Point(0,-1), Point(0, 0), Point(1,0), Point(2,0)],
+        [Point(-1, 0), Point(0, 0), Point(0, -1), Point(0, -2)],
+        [Point(-2, 0), Point(-1, 0), Point(0, 0), Point(0, 1)],
+        [Point(0, 0), Point(0, 1), Point(0, 2), Point(1, 0)]
+    ]
+    def __init__(self, point):
+        super().__init__(point)
+        self.color = (255, 0, 0)
+        self.shape_idx = 0
+        self.pattern = J.SHAPE
+        self.shape = J.SHAPE[self.shape_idx]
+
 
 
 class L(Piece):
-    def __init__(self, tuple):
-        super().__init__(tuple)
-        self.color = (0, 255, 0)
-        self.shape = [Point(0, 0), Point(0,1), Point(1,1), Point(2,1)]
+    SHAPE = [
+        [Point(0,0), Point(1, 0), Point(2,0), Point(2,-1)],
+        [Point(-1, 0), Point(0, 0), Point(0, 1), Point(0, 2)],
+        [Point(0, 0), Point(1, 0), Point(2, 0), Point(0, 1)],
+        [Point(0, -2), Point(0, -1), Point(0, 0), Point(1, 0)]
+    ]
+    def __init__(self, point):
+        super().__init__(point)
+        self.color = (255, 0, 0)
+        self.shape_idx = 0
+        self.pattern = L.SHAPE
+        self.shape = L.SHAPE[self.shape_idx]
+
+class O(Piece):
+    SHAPE = [
+        [Point(0,0), Point(1, 0), Point(0,1), Point(1,1)],
+    ]
+    def __init__(self, point):
+        super().__init__(point)
+        self.color = (255, 0, 0)
+        self.shape_idx = 0
+        self.pattern = O.SHAPE
+        self.shape = O.SHAPE[self.shape_idx]
+
+class S(Piece):
+    SHAPE = [
+        [Point(-1,0), Point(0, 0), Point(0, -1), Point(1, -1)],
+        [Point(-1, 0), Point(-1, -1), Point(0, 0), Point(0, 1)]
+    ]
+    def __init__(self, point):
+        super().__init__(point)
+        self.color = (255, 0, 0)
+        self.shape_idx = 0
+        self.pattern = S.SHAPE
+        self.shape = S.SHAPE[self.shape_idx]
+
+class T(Piece):
+    SHAPE = [
+        [Point(-1,0), Point(0, 0), Point(1,0), Point(0,-1)],
+        [Point(-1, 0), Point(0, 0), Point(0, 1), Point(0, -1)],
+        [Point(-1, 0), Point(0, 0), Point(1, 0), Point(0, 1)],
+        [Point(0, -1), Point(0, 0), Point(0, 1), Point(1, 0)]
+    ]
+    def __init__(self, point):
+        super().__init__(point)
+        self.color = (255, 0, 0)
+        self.shape_idx = 0
+        self.pattern = T.SHAPE
+        self.shape = T.SHAPE[self.shape_idx]
+
+class Z(Piece):
+    SHAPE = [
+        [Point(-1,0), Point(0, 0), Point(0,1), Point(1,1)],
+        [Point(-1, 0), Point(0, 0), Point(0, 1), Point(0, 2)],
+        [Point(0, 0), Point(1, 0), Point(2, 0), Point(0, 1)],
+        [Point(-1, 0), Point(-1, 1), Point(0, 0), Point(0, -1)]
+    ]
+    def __init__(self, point):
+        super().__init__(point)
+        self.color = (255, 0, 0)
+        self.shape_idx = 0
+        self.pattern = Z.SHAPE
+        self.shape = Z.SHAPE[self.shape_idx]
+
 

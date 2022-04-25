@@ -1,8 +1,9 @@
 import pygame
 import sys
+import random
 from pygame.locals import *
 
-from piece import I, L, Vector, Rotate
+from piece import I, J, L, O, S, T, Z, Vector, Rotate
 from grid import Grid
 from base import Point
 from pile import Pile
@@ -20,9 +21,9 @@ pygame.key.set_repeat(300, 10)
 clock = pygame.time.Clock()
 grid = Grid(X, Y)
 pile = Pile(grid)
+all_cubes = [I, J, L, O, S, T, Z]
 
-active = I(Point(4,0))
-active.draw(grid)
+active = None
 # set a timer for every 1 second initial
 pygame.time.set_timer(pygame.USEREVENT, 1000)
 
@@ -33,13 +34,12 @@ while True:
 
     move = Point(0, 0)
     if active is None:
-        active = I (Point(4, 0))
+        active = all_cubes[random.randint(0, 6)](Point(4, 1))
         if pile.collideWithPiece(active):
             # Print Game Over
             grid.text(over_text)
             active = None
         
-
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
