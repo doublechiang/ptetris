@@ -12,4 +12,4 @@ start the program by running follow command
 $ python3 main.py 
 
 ASD keys to control the direction.
-,. to control the rotation.
+,. to control the rotation

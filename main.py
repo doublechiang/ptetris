@@ -35,6 +35,7 @@ while True:
     move = Point(0, 0)
     if active is None:
         active = all_cubes[random.randint(0, 6)](Point(4, 1))
+        # active = T(Point(4, 1))
         if pile.collideWithPiece(active):
             # Print Game Over
             grid.text(over_text)
