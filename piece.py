@@ -4,7 +4,6 @@ from typing import List
 
 from base import Point
 
-
 class Rotate(enum.IntEnum):
     ROT_CLOCK=-1,
     ROT_COUNTERCLOCK=1
