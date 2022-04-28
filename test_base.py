@@ -11,4 +11,4 @@ class TestBase(unittest.TestCase):
 
     def test_eq(self):
         assert (Point(1, 1) == Point(1,1))
-        assert (Point(2, 1) != Point(2, 1))
+        assert (Point(2, 1) != Point(1, 1))
